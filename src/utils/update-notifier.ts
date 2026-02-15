@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import chalk from 'chalk';
 import { getHomeDir } from './platform.js';
 
@@ -18,12 +19,26 @@ function stripAnsi(str: string): string {
 }
 
 function getCurrentVersion(): string | null {
+  // 1. Try ~/.codeaudit/package.json (installed via install.sh)
   try {
-    const pkgPath = join(CACHE_DIR, 'package.json');
-    if (existsSync(pkgPath)) {
-      return JSON.parse(readFileSync(pkgPath, 'utf-8')).version || null;
+    const installPkg = join(CACHE_DIR, 'package.json');
+    if (existsSync(installPkg)) {
+      return JSON.parse(readFileSync(installPkg, 'utf-8')).version || null;
     }
   } catch {}
+
+  // 2. Try relative to running script (npm link / dev mode)
+  try {
+    const thisFile = fileURLToPath(import.meta.url);
+    // From dist/index.js → 2 levels up; from src/utils/*.ts → 3 levels up
+    for (const levels of ['../..', '../../..']) {
+      const pkgPath = resolve(thisFile, levels, 'package.json');
+      if (existsSync(pkgPath)) {
+        return JSON.parse(readFileSync(pkgPath, 'utf-8')).version || null;
+      }
+    }
+  } catch {}
+
   return null;
 }
 
