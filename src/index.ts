@@ -8,6 +8,7 @@ import { listAudits } from './commands/list.js';
 import { runInit } from './commands/init.js';
 import { runInstall } from './commands/install.js';
 import { runUpdate } from './commands/update.js';
+import { runUninstall } from './commands/uninstall.js';
 
 const program = new Command();
 
@@ -69,6 +70,13 @@ program
     await runUpdate();
   });
 
+program
+  .command('uninstall')
+  .description('Remove codeaudit from your system')
+  .action(async () => {
+    await runUninstall();
+  });
+
 // Custom default: show banner + styled commands when no args
 program.action(() => {
   printBanner();
@@ -89,6 +97,7 @@ program.action(() => {
   console.log(`    ${green('init')}                Detect AI tools and install skills`);
   console.log(`    ${green('install')} ${cyan('<agent>')}   Install skills to an agent ${dim('(claude, cursor, gemini)')}`);
   console.log(`    ${green('update')}              Update to the latest version`);
+  console.log(`    ${green('uninstall')}           Remove codeaudit from your system`);
   console.log();
   console.log(white('  Options:'));
   console.log();
