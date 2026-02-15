@@ -2,51 +2,26 @@
 
 ## Role
 
-You are a software architecture analyst. Your task is to evaluate the project's architectural patterns, layering, modularity, and adherence to SOLID principles.
+Software architecture analyst. Evaluate architectural patterns, layering, modularity, and SOLID adherence.
 
 ## Efficiency Constraints
 
 - Maximum 12 tool calls
 - Scan directory structures first, then read representative files
 - Focus on patterns, not line-by-line review
-
-## Prerequisites
-
-Read `reports/.artifacts/step_00_stack_detector.md` to understand the tech stack.
+- Prior artifacts are in context — do NOT re-read them
 
 ## Instructions
 
-1. **Architectural pattern identification**:
-   - Detect the pattern: MVC, Clean Architecture, Hexagonal, Layered, Microservices, Monolith, etc.
-   - Assess consistency of the pattern across the codebase
-   - Check for proper separation of concerns
+1. **Pattern identification**: detect MVC/Clean/Hexagonal/Layered/etc., assess consistency, separation of concerns
 
-2. **Layer analysis**:
-   - Identify layers (controllers/routes, services/use-cases, repositories/data, models/entities)
-   - Check for layer violations (e.g., controllers directly accessing database)
-   - Assess dependency direction (dependencies should point inward)
+2. **Layer analysis**: identify layers (controllers, services, repositories, models), check for violations, assess dependency direction
 
-3. **Modularity assessment**:
-   - Module/feature organization (by feature vs by type)
-   - Module coupling (tight vs loose)
-   - Module cohesion (related functionality grouped together)
-   - Shared code organization (utils, helpers, common)
+3. **Modularity**: by-feature vs by-type organization, coupling, cohesion, shared code
 
-4. **SOLID principles check**:
-   - **S**ingle Responsibility: files/classes with too many responsibilities
-   - **O**pen/Closed: extension patterns vs modification
-   - **L**iskov Substitution: proper inheritance/interface usage
-   - **I**nterface Segregation: interface design
-   - **D**ependency Inversion: dependency injection patterns
+4. **SOLID principles**: Single Responsibility, Open/Closed, Liskov, Interface Segregation, Dependency Inversion
 
-5. **Framework-specific patterns**:
-   - NestJS: modules, providers, guards, interceptors, pipes
-   - React/Next.js: component hierarchy, hooks, state management
-   - Django: apps, models, views, serializers
-   - Spring: beans, services, repositories, controllers
-   - Flutter: BLoC/Provider/Riverpod, repository pattern
-   - Express: middleware, routes, controllers
-   - (Adapt to detected framework)
+5. **Framework-specific patterns**: adapt checks to detected framework (NestJS modules, React hooks, Django apps, Flutter BLoC, etc.)
 
 ## Scoring Criteria (0-100)
 
@@ -60,42 +35,24 @@ Read `reports/.artifacts/step_00_stack_detector.md` to understand the tech stack
 
 ## Output Format
 
-Save results to: `reports/.artifacts/step_03_architecture_analysis.md`
+Save to: `reports/.artifacts/step_03_architecture_analysis.md` (keep under 60 lines)
 
 ```
 # Architecture Analysis
+## Pattern: [name] — [consistent/mostly/inconsistent]
 
-## Detected Pattern
-[pattern name and description]
-
-## Layer Structure
+## Layers
 | Layer | Directory | Assessment |
 |-------|-----------|------------|
-| Presentation | [path] | [assessment] |
-| Business Logic | [path] | [assessment] |
-| Data Access | [path] | [assessment] |
 
-## Modularity
-### Organization Style: [by-feature | by-type | mixed]
-[assessment]
+## Modularity: [by-feature|by-type|mixed] — Coupling: [loose/moderate/tight]
 
-### Coupling Assessment
-[findings]
-
-## SOLID Compliance
+## SOLID
 | Principle | Status | Notes |
 |-----------|--------|-------|
-| Single Responsibility | ✓/⚠/✗ | |
-| Open/Closed | ✓/⚠/✗ | |
-| Liskov Substitution | ✓/⚠/✗ | |
-| Interface Segregation | ✓/⚠/✗ | |
-| Dependency Inversion | ✓/⚠/✗ | |
 
-## Framework-Specific Patterns
-[findings for detected framework]
-
-## Key Issues
-[prioritized list]
+## Framework Patterns: [key findings]
+## Key Issues: [prioritized, max 5]
 
 ## Score: [XX]/100
 ## Label: [Strong|Fair|Weak]

@@ -24,15 +24,51 @@ function buildCleanEnv(): Record<string, string> {
   return env;
 }
 
-function buildPrompt(step: PlanStep, totalSteps: number, cwd: string): string {
+function collectPriorArtifacts(cwd: string, currentStepIndex: number, auditType: string): string {
+  const artifactsDir = join(cwd, 'reports', '.artifacts');
+  if (!existsSync(artifactsDir)) return '';
+
+  const prefix = auditType === 'health' ? 'step_' : 'practices_step_';
+  const artifacts: string[] = [];
+
+  try {
+    const files = readdirSync(artifactsDir)
+      .filter((f) => f.startsWith(prefix) && f.endsWith('.md'))
+      .sort();
+
+    for (const file of files) {
+      // Extract step number from filename
+      const match = file.match(/step_(\d+)/);
+      if (!match) continue;
+      const stepNum = parseInt(match[1], 10);
+      if (stepNum >= currentStepIndex) continue;
+
+      const content = readFileSync(join(artifactsDir, file), 'utf-8');
+      artifacts.push(`--- Artifact: ${file} ---\n${content}`);
+    }
+  } catch {
+    // ignore
+  }
+
+  return artifacts.length > 0
+    ? '\n\n## Context from prior steps (already completed — DO NOT re-read these files)\n\n' + artifacts.join('\n\n')
+    : '';
+}
+
+function buildPrompt(step: PlanStep, totalSteps: number, cwd: string, auditType: string): string {
   const ruleContent = readFileSync(step.filepath, 'utf-8');
+  const priorContext = step.index > 0 ? collectPriorArtifacts(cwd, step.index, auditType) : '';
+
   return [
     `You are executing step ${step.index + 1} of ${totalSteps} in a project audit.`,
     `Working directory: ${cwd}`,
     '',
+    'IMPORTANT: Be concise and efficient. Minimize tool calls. Do not read files already provided in context below.',
+    '',
     'Read and follow the instructions below exactly:',
     '',
     ruleContent,
+    priorContext,
   ].join('\n');
 }
 
@@ -44,7 +80,7 @@ function buildAgentArgs(agent: ResolvedAgent): string[] {
         '--allowedTools', 'Read,Bash,Glob,Grep,Write',
         '--output-format', 'json',
         '--model', agent.model,
-        '--max-turns', '50',
+        '--max-turns', '25',
       ];
     case 'cursor':
       return ['--print', '--output-format', 'json'];
@@ -93,10 +129,11 @@ export async function executeStep(options: {
   step: PlanStep;
   totalSteps: number;
   cwd: string;
+  auditType: string;
 }): Promise<StepResult> {
-  const { agent, step, totalSteps, cwd } = options;
+  const { agent, step, totalSteps, cwd, auditType } = options;
   const cleanEnv = buildCleanEnv();
-  const prompt = buildPrompt(step, totalSteps, cwd);
+  const prompt = buildPrompt(step, totalSteps, cwd, auditType);
   const args = buildAgentArgs(agent);
 
   const startTime = Date.now();

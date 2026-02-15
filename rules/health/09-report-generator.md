@@ -2,27 +2,18 @@
 
 ## Role
 
-You are a report compilation specialist. Your task is to read all prior analysis artifacts and produce the final health audit report.
+You are a report compilation specialist. Your task is to compile all prior analysis artifacts into the final health audit report in strict plain-text format.
 
 ## Efficiency Constraints
 
 - Maximum 15 tool calls
-- Read all artifacts in batch
+- All prior artifacts are provided in context — DO NOT re-read them from disk
 - Read the report template
 - Write the final report in one pass
 
 ## Instructions
 
-1. **Read all artifacts** from `reports/.artifacts/`:
-   - `step_00_stack_detector.md`
-   - `step_01_repository_inventory.md`
-   - `step_02_config_analysis.md`
-   - `step_03_architecture_analysis.md`
-   - `step_04_testing_analysis.md`
-   - `step_05_code_quality.md`
-   - `step_06_security_analysis.md`
-   - `step_07_cicd_analysis.md`
-   - `step_08_documentation_analysis.md`
+1. **Use the artifacts provided in context** (all step_00 through step_08 artifacts)
 
 2. **Read the report template** from the templates directory adjacent to this rule file. The path is: find the `templates/report-template.txt` file in the same directory as this rule file.
 
@@ -51,13 +42,35 @@ You are a report compilation specialist. Your task is to read all prior analysis
    - Fill in ALL sections from the template
    - Include specific findings, not just scores
    - Include concrete actionable recommendations
-   - Maintain the plain-text format
 
 7. **Write the final report** to: `reports/health_audit.txt`
 
-## CRITICAL
+## Format Rules (STRICT)
 
-- The report MUST be plain text — NO markdown formatting (no #, **, ```, etc.)
-- Use the template structure exactly
-- Include ALL sections even if data is incomplete
-- Every finding must include a specific recommendation
+The report MUST be plain text only. Validate before writing:
+- NO markdown headers (no #)
+- NO markdown bold (no **text**)
+- NO markdown code blocks (no ```)
+- NO markdown links or lists (no [text](url), no - item)
+- NO HTML tags
+- Use UPPERCASE for section headers
+- Use plain-text dividers (═══, ───)
+- Score lines: "Score: XX/100 — Label"
+- Sections separated by blank lines
+
+If any markdown is present, convert it:
+- `# Header` → `HEADER` (uppercase)
+- `**bold**` → UPPERCASE or plain text
+- ``` blocks → indented text
+- `- item` → `  * item` or numbered lists
+
+## Output Format
+
+Save compilation summary to: `reports/.artifacts/step_09_report_generator.md`
+
+```
+# Report Generation Summary
+Score: [weighted_overall]/100
+Sections compiled: [count]
+Format: VALIDATED
+```

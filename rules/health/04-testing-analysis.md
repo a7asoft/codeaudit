@@ -2,100 +2,56 @@
 
 ## Role
 
-You are a testing strategy analyst. Your task is to evaluate the project's test coverage, test quality, testing patterns, and testing infrastructure.
+Testing strategy analyst. Evaluate test coverage, quality, patterns, and infrastructure.
 
 ## Efficiency Constraints
 
 - Maximum 10 tool calls
-- Scan test directories first, then sample representative test files
+- Scan test directories first, then sample 3-5 test files
 - Use file counts and patterns rather than reading every file
-
-## Prerequisites
-
-Read `reports/.artifacts/step_00_stack_detector.md` to understand the tech stack.
+- Prior artifacts are in context — do NOT re-read them
 
 ## Instructions
 
-1. **Test infrastructure**:
-   - Testing framework(s) used (Jest, Vitest, Mocha, pytest, JUnit, RSpec, flutter_test, etc.)
-   - Test runner configuration
-   - Coverage tool setup
-   - Test scripts in package manager
+1. **Infrastructure**: testing framework, runner, coverage tool, test scripts
 
-2. **Test inventory**:
-   - Total test files count
-   - Test-to-source file ratio
-   - Test file naming convention (.test., .spec., _test., test_)
-   - Test directory organization
+2. **Inventory**: test file count, test-to-source ratio, naming convention, organization
 
-3. **Test types present**:
-   - Unit tests
-   - Integration tests
-   - End-to-end (E2E) tests
-   - API/contract tests
-   - Widget/component tests (frontend)
-   - Performance/load tests
+3. **Test types**: unit, integration, E2E, API/contract, component, performance
 
-4. **Test quality assessment** (sample 3-5 test files):
-   - Arrange-Act-Assert pattern
-   - Descriptive test names
-   - Edge case coverage
-   - Mock/stub usage and appropriateness
-   - Test isolation (no shared mutable state)
-   - Assertion quality (specific vs generic)
+4. **Quality** (sample 3-5 files): AAA pattern, descriptive names, edge cases, mock usage, isolation, assertion quality
 
-5. **Coverage analysis**:
-   - Is coverage configured?
-   - Coverage thresholds set?
-   - Coverage report generation
+5. **Coverage**: configured?, thresholds?, report generation?
 
 ## Scoring Criteria (0-100)
 
 | Criteria | Points |
 |----------|--------|
-| Test framework configured | 0-10 |
+| Framework configured | 0-10 |
 | Meaningful test count | 0-20 |
 | Test types variety | 0-20 |
-| Test quality (from samples) | 0-25 |
-| Coverage setup and thresholds | 0-15 |
-| Test organization | 0-10 |
+| Test quality (samples) | 0-25 |
+| Coverage setup | 0-15 |
+| Organization | 0-10 |
 
 ## Output Format
 
-Save results to: `reports/.artifacts/step_04_testing_analysis.md`
+Save to: `reports/.artifacts/step_04_testing_analysis.md` (keep under 50 lines)
 
 ```
 # Testing Analysis
+## Infrastructure: [framework] | Runner: [name] | Coverage: [tool or "none"]
 
-## Infrastructure
-- Framework: [name] ([version])
-- Runner: [name]
-- Coverage tool: [name or "not configured"]
-
-## Test Inventory
-- Test files: [count]
-- Source files: [count]
-- Test:Source ratio: [ratio]
-- Naming convention: [pattern]
+## Inventory
+- Tests: [count] | Sources: [count] | Ratio: [ratio] | Convention: [pattern]
 
 ## Test Types
-| Type | Present | Count | Notes |
-|------|---------|-------|-------|
-| Unit | ✓/✗ | XX | |
-| Integration | ✓/✗ | XX | |
-| E2E | ✓/✗ | XX | |
-| Component | ✓/✗ | XX | |
+| Type | Present | Count |
+|------|---------|-------|
 
-## Quality Assessment (sampled)
-[findings from sampled test files]
-
-## Coverage
-- Configured: [yes/no]
-- Thresholds: [values or "none"]
-- Report format: [format or "not configured"]
-
-## Key Issues
-[prioritized list]
+## Quality (sampled): [key findings, max 5 lines]
+## Coverage: [configured/not] — Thresholds: [values or "none"]
+## Key Issues: [max 5]
 
 ## Score: [XX]/100
 ## Label: [Strong|Fair|Weak]

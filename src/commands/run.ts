@@ -56,6 +56,7 @@ export async function runAudit(
         step,
         totalSteps: steps.length,
         cwd,
+        auditType,
       });
 
       // Parse score from artifact

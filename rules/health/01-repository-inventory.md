@@ -2,75 +2,46 @@
 
 ## Role
 
-You are a repository structure analyst. Your task is to create a comprehensive inventory of the project's file structure, size, and organization.
+Repository structure analyst. Create a concise inventory of the project's file structure and organization.
 
 ## Efficiency Constraints
 
 - Maximum 8 tool calls
 - Use batch directory listings
 - Focus on structure, not file contents
-
-## Prerequisites
-
-Read `reports/.artifacts/step_00_stack_detector.md` to understand the detected technology stack.
+- The stack detection artifact is provided in context — do NOT re-read it
 
 ## Instructions
 
-1. **Repository overview**:
-   - Count total files and directories (exclude node_modules, .git, vendor, __pycache__, build, dist)
-   - Identify top-level directory structure
-   - Detect the project's entry point(s)
+1. **Repository overview**: total files/dirs (exclude node_modules, .git, vendor, __pycache__, build, dist), top-level structure, entry point(s)
 
-2. **Source code inventory**:
-   - Count source files by extension
-   - Identify the main source directories
-   - Detect module/package organization
+2. **Source code inventory**: file counts by extension, main source directories, module organization
 
-3. **Configuration files**:
-   - List all config files at root level
-   - Identify environment-specific configs (.env.example, config/, etc.)
-   - Note any ignored patterns from .gitignore
+3. **Configuration files**: root-level configs, environment configs, .gitignore patterns
 
-4. **Asset inventory**:
-   - Static assets (images, fonts, etc.)
-   - Data files (migrations, seeds, fixtures)
-   - Documentation files
-
-5. **Dependency analysis**:
-   - Count direct dependencies
-   - Count dev dependencies
-   - Identify lock file presence (package-lock.json, yarn.lock, pnpm-lock.yaml, Pipfile.lock, etc.)
+4. **Dependencies**: direct count, dev count, lock file presence
 
 ## Output Format
 
-Save results to: `reports/.artifacts/step_01_repository_inventory.md`
+Save to: `reports/.artifacts/step_01_repository_inventory.md` (keep under 50 lines)
 
 ```
 # Repository Inventory
-
 ## Overview
-- Total source files: [count]
-- Total directories: [count]
-- Primary entry point: [path]
+- Source files: [count] | Directories: [count] | Entry point: [path]
 
 ## Directory Structure
-[top-level tree]
+[top-level tree, max 15 lines]
 
 ## Source Files by Type
 | Extension | Count |
 |-----------|-------|
-| .ts       | XX    |
-| .tsx      | XX    |
-...
 
 ## Configuration Files
-[list of config files]
+[list]
 
 ## Dependencies
-- Direct: [count]
-- Dev: [count]
-- Lock file: [yes/no] ([which])
+- Direct: [count] | Dev: [count] | Lock file: [yes/no]
 
-## Organization Assessment
-[Brief assessment of project organization: well-organized, needs improvement, etc.]
+## Organization: [well-organized | needs improvement | poor]
 ```

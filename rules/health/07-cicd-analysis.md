@@ -2,52 +2,24 @@
 
 ## Role
 
-You are a CI/CD pipeline analyst. Your task is to evaluate the project's continuous integration, continuous delivery, and automation setup.
+CI/CD pipeline analyst. Evaluate CI/CD setup, pipeline stages, and automation quality.
 
 ## Efficiency Constraints
 
 - Maximum 8 tool calls
 - Check for CI config files first, then read them
 - Focus on pipeline completeness
-
-## Prerequisites
-
-Read `reports/.artifacts/step_00_stack_detector.md` to understand the tech stack.
+- Prior artifacts are in context — do NOT re-read them
 
 ## Instructions
 
-1. **CI/CD platform detection**:
-   - GitHub Actions (`.github/workflows/`)
-   - GitLab CI (`.gitlab-ci.yml`)
-   - Jenkins (`Jenkinsfile`)
-   - CircleCI (`.circleci/config.yml`)
-   - Travis CI (`.travis.yml`)
-   - Azure Pipelines (`azure-pipelines.yml`)
-   - Bitbucket Pipelines (`bitbucket-pipelines.yml`)
-   - Other platforms
+1. **Platform detection**: GitHub Actions, GitLab CI, Jenkins, CircleCI, Travis, Azure, Bitbucket
 
-2. **Pipeline stages**:
-   - Build stage present
-   - Test stage present
-   - Lint/format check stage
-   - Security scan stage
-   - Deploy stage(s) present
-   - Environment-specific pipelines (dev, staging, prod)
+2. **Pipeline stages**: build, test, lint, security scan, deploy, environment-specific pipelines
 
-3. **Automation quality**:
-   - Triggers configured (push, PR, schedule)
-   - Branch protection/rules
-   - Automated testing on PRs
-   - Code review requirements
-   - Automated deployments
+3. **Automation**: triggers (push/PR/schedule), branch protection, PR testing, code review, auto-deploy
 
-4. **DevOps practices**:
-   - Docker/containerization
-   - Infrastructure as Code (Terraform, Pulumi, CloudFormation)
-   - Environment variables management
-   - Secrets management in CI
-   - Artifact management
-   - Monitoring/alerting integration
+4. **DevOps**: Docker, IaC, env vars management, secrets in CI, artifacts, monitoring
 
 ## Scoring Criteria (0-100)
 
@@ -61,37 +33,21 @@ Read `reports/.artifacts/step_00_stack_detector.md` to understand the tech stack
 
 ## Output Format
 
-Save results to: `reports/.artifacts/step_07_cicd_analysis.md`
+Save to: `reports/.artifacts/step_07_cicd_analysis.md` (keep under 45 lines)
 
 ```
 # CI/CD Analysis
-
-## Platform
-- CI/CD: [platform name]
-- Config: [file path]
+## Platform: [name] — Config: [path]
 
 ## Pipeline Stages
 | Stage | Present | Details |
 |-------|---------|---------|
-| Build | ✓/✗ | |
-| Test | ✓/✗ | |
-| Lint | ✓/✗ | |
-| Security | ✓/✗ | |
-| Deploy | ✓/✗ | |
 
 ## Automation
-- PR triggers: [yes/no]
-- Branch protection: [yes/no/unknown]
-- Auto-deploy: [yes/no]
-- Environments: [list]
+- PR triggers: [yes/no] | Branch protection: [yes/no] | Auto-deploy: [yes/no]
 
-## DevOps
-- Containerization: [Docker/none]
-- IaC: [tool or none]
-- Secrets management: [method]
-
-## Key Issues
-[prioritized list]
+## DevOps: Docker: [yes/no] | IaC: [tool/none] | Secrets: [method]
+## Key Issues: [max 5]
 
 ## Score: [XX]/100
 ## Label: [Strong|Fair|Weak]

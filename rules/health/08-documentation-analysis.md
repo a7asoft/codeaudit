@@ -2,98 +2,58 @@
 
 ## Role
 
-You are a documentation analyst. Your task is to evaluate the project's documentation quality, completeness, and accessibility.
+Documentation analyst. Evaluate documentation quality, completeness, and accessibility.
 
 ## Efficiency Constraints
 
 - Maximum 8 tool calls
 - Scan for doc files first, then sample content
 - Focus on presence and quality, not reading everything
-
-## Prerequisites
-
-Read `reports/.artifacts/step_00_stack_detector.md` to understand the tech stack.
+- Prior artifacts are in context — do NOT re-read them
 
 ## Instructions
 
-1. **README assessment**:
-   - README.md exists and is non-trivial
-   - Project description present
-   - Installation/setup instructions
-   - Usage examples
-   - Contributing guidelines
-   - License information
+1. **README**: exists, non-trivial, has description/install/usage/contributing/license
 
-2. **API documentation**:
-   - API docs present (Swagger/OpenAPI, GraphQL schema, etc.)
-   - API docs auto-generated or manual
-   - API docs complete and up-to-date indicators
-   - Postman/Insomnia collections
+2. **API docs**: Swagger/OpenAPI/GraphQL schema, auto-generated or manual, completeness
 
-3. **Code documentation**:
-   - Inline comments quality (sample files)
-   - JSDoc/docstrings/type hints presence
-   - Complex logic documented
-   - Architecture decision records (ADRs)
+3. **Code docs**: inline comments quality, JSDoc/docstrings, complex logic documented, ADRs
 
-4. **Operational documentation**:
-   - Deployment documentation
-   - Environment setup guide
-   - Troubleshooting guide
-   - CHANGELOG.md present
-   - CONTRIBUTING.md present
+4. **Operational**: deployment docs, env setup, troubleshooting, CHANGELOG, CONTRIBUTING
 
-5. **Developer experience**:
-   - Onboarding documentation
-   - Development workflow documented
-   - Code style guide referenced
-   - IDE setup / editor config
+5. **Developer experience**: onboarding, workflow, code style guide, IDE setup
 
 ## Scoring Criteria (0-100)
 
 | Criteria | Points |
 |----------|--------|
-| README complete and helpful | 0-25 |
+| README complete | 0-25 |
 | API documentation | 0-20 |
 | Code documentation | 0-20 |
 | Operational docs | 0-20 |
-| Developer experience docs | 0-15 |
+| Developer experience | 0-15 |
 
 ## Output Format
 
-Save results to: `reports/.artifacts/step_08_documentation_analysis.md`
+Save to: `reports/.artifacts/step_08_documentation_analysis.md` (keep under 45 lines)
 
 ```
 # Documentation Analysis
+## README: [comprehensive/adequate/minimal/missing]
+- Sections: [list]
 
-## README
-- Present: [yes/no]
-- Sections: [list of sections found]
-- Quality: [comprehensive/adequate/minimal/missing]
+## API Docs: [type or "none"] — Completeness: [assessment]
+## Code Docs: Comments: [good/sparse/missing] — Docstrings: [yes/no]
 
-## API Documentation
-- Type: [Swagger/OpenAPI/GraphQL/None]
-- Auto-generated: [yes/no]
-- Completeness: [assessment]
-
-## Code Documentation
-- Inline comments: [assessment]
-- Docstrings/JSDoc: [present/sparse/missing]
-- Type documentation: [assessment]
-
-## Operational Documentation
+## Operational
 | Document | Present |
 |----------|---------|
-| CHANGELOG | ✓/✗ |
-| CONTRIBUTING | ✓/✗ |
-| Deploy guide | ✓/✗ |
-| Setup guide | ✓/✗ |
+| CHANGELOG | yes/no |
+| CONTRIBUTING | yes/no |
+| Deploy guide | yes/no |
 
-## Developer Experience
-[findings]
-
-## Key Issues
-[prioritized list]
+## Developer Experience: [assessment]
+## Key Issues: [max 5]
 
 ## Score: [XX]/100
 ## Label: [Strong|Fair|Weak]

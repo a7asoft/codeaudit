@@ -20,13 +20,12 @@ This audit performs a comprehensive health assessment of any software project, r
 7. `06-security-analysis.md` — Security Analysis
 8. `07-cicd-analysis.md` — CI/CD Analysis
 9. `08-documentation-analysis.md` — Documentation Analysis
-10. `09-report-generator.md` — Report Generation
-11. `10-format-enforcer.md` — Format Enforcement
+10. `09-report-generator.md` — Report Generation & Format Enforcement
 
 ## Rules
 
 - Each step MUST save its output to the specified artifact path
 - Steps are sequential — each step may depend on artifacts from prior steps
 - Step 00 (Stack Detection) is MANDATORY and runs first — all subsequent steps adapt to the detected stack
-- Step 09 reads ALL prior artifacts and produces the final report
-- Step 10 validates and enforces the plain-text report format
+- Prior step artifacts are injected into each step's context — avoid re-reading them from disk
+- Step 09 uses ALL prior artifacts (provided in context) to produce and format-validate the final report
