@@ -20,16 +20,19 @@ export async function runUpdate(): Promise<void> {
   logger.info('Updating codeaudit...');
   logger.blank();
 
-  // Git pull
+  // Git fetch + reset to origin (always works, even after force pushes)
   let spinner = ora('Pulling latest changes...').start();
   try {
-    const result = await execa('git', ['pull', 'origin', 'main'], { cwd: installDir });
-    if (result.stdout.includes('Already up to date')) {
+    await execa('git', ['fetch', 'origin', 'main'], { cwd: installDir });
+    const local = (await execa('git', ['rev-parse', 'HEAD'], { cwd: installDir })).stdout.trim();
+    const remote = (await execa('git', ['rev-parse', 'origin/main'], { cwd: installDir })).stdout.trim();
+    if (local === remote) {
       spinner.succeed('Already on the latest version');
       logger.blank();
       logger.success(`codeaudit v${oldVersion} — no updates available`);
       return;
     }
+    await execa('git', ['reset', '--hard', 'origin/main'], { cwd: installDir });
     spinner.succeed('Changes pulled');
   } catch (err: unknown) {
     spinner.fail('Failed to pull changes');
