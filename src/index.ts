@@ -1,10 +1,12 @@
 import { Command } from 'commander';
 import { printBanner } from './utils/banner.js';
+import { checkForUpdates } from './utils/update-notifier.js';
 import { runAudit } from './commands/run.js';
 import { runDoctor } from './commands/doctor.js';
 import { listAudits } from './commands/list.js';
 import { runInit } from './commands/init.js';
 import { runInstall } from './commands/install.js';
+import { runUpdate } from './commands/update.js';
 
 const program = new Command();
 
@@ -14,6 +16,7 @@ program
   .version('0.1.0')
   .hook('preAction', () => {
     printBanner();
+    checkForUpdates();
   });
 
 program
@@ -51,6 +54,13 @@ program
   .description('Install audit skills to a specific AI agent (claude, cursor, gemini)')
   .action(async (agent: string) => {
     await runInstall(agent);
+  });
+
+program
+  .command('update')
+  .description('Update codeaudit to the latest version')
+  .action(async () => {
+    await runUpdate();
   });
 
 program.parse();
