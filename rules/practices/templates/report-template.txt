@@ -1,0 +1,126 @@
+════════════════════════════════════════════════════════════════════
+                  BEST PRACTICES AUDIT REPORT
+════════════════════════════════════════════════════════════════════
+
+Project: [PROJECT_NAME]
+Date: [DATE]
+Auditor: AI-Powered Audit (codeaudit)
+
+════════════════════════════════════════════════════════════════════
+                         EXECUTIVE SUMMARY
+════════════════════════════════════════════════════════════════════
+
+Overall Score: [SCORE]/100 — [LABEL]
+
+[2-3 sentence summary of the project's code quality status,
+highlighting the most important strengths and concerns.]
+
+────────────────────────────────────────────────────────────────────
+SECTION SCORES
+────────────────────────────────────────────────────────────────────
+
+  Testing Quality              [XX]/100  [Label]  (weight: 35%)
+  Architecture Compliance      [XX]/100  [Label]  (weight: 35%)
+  Code Standards               [XX]/100  [Label]  (weight: 30%)
+
+════════════════════════════════════════════════════════════════════
+                     1. TESTING QUALITY
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+COVERAGE
+  [Assessment of test coverage breadth and depth]
+
+QUALITY PATTERNS
+  [Assessment of test quality, AAA pattern, naming, assertions]
+
+EDGE CASES
+  [Assessment of edge case coverage]
+
+MOCKING STRATEGY
+  [Assessment of mock/stub usage and quality]
+
+VIOLATIONS FOUND
+  [file:line — description — severity]
+  [file:line — description — severity]
+  ...
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+  3. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                  2. ARCHITECTURE COMPLIANCE
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+PATTERN ADHERENCE
+  [Assessment of architectural pattern consistency]
+
+LAYER BOUNDARIES
+  [Assessment of layer boundary compliance]
+
+DEPENDENCY RULES
+  [Assessment of dependency direction and injection]
+
+VIOLATIONS FOUND
+  [file:line — description — severity]
+  [file:line — description — severity]
+  ...
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+  3. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                      3. CODE STANDARDS
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+NAMING CONVENTIONS
+  [Assessment of naming consistency and quality]
+
+ERROR HANDLING
+  [Assessment of error handling patterns]
+
+IMPLEMENTATION QUALITY
+  [Assessment of function length, nesting, DRY]
+
+TYPE SAFETY
+  [Assessment of type system usage]
+
+VIOLATIONS FOUND
+  [file:line — description — severity]
+  [file:line — description — severity]
+  ...
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+  3. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                    PRIORITY ACTION ITEMS
+════════════════════════════════════════════════════════════════════
+
+HIGH PRIORITY (address immediately)
+  1. [Most critical violation with file:line and fix]
+  2. [Second most critical violation]
+  3. [Third most critical violation]
+
+MEDIUM PRIORITY (address within sprint)
+  1. [Important improvement]
+  2. [Important improvement]
+
+LOW PRIORITY (address when possible)
+  1. [Nice-to-have improvement]
+  2. [Nice-to-have improvement]
+
+════════════════════════════════════════════════════════════════════
+                         END OF REPORT
+════════════════════════════════════════════════════════════════════

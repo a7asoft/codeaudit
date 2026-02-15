@@ -1,0 +1,38 @@
+{
+  "name": "codeaudit",
+  "version": "0.1.0",
+  "description": "Universal AI-Powered Project Audit CLI",
+  "type": "module",
+  "bin": {
+    "codeaudit": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "audit",
+    "cli",
+    "ai",
+    "code-quality"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^12.1.0",
+    "execa": "^9.5.2",
+    "gradient-string": "^3.0.0",
+    "inquirer": "^9.3.7",
+    "log-update": "^7.1.0",
+    "ora": "^8.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

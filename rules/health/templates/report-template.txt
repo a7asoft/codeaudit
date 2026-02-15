@@ -1,0 +1,229 @@
+════════════════════════════════════════════════════════════════════
+                     PROJECT HEALTH AUDIT REPORT
+════════════════════════════════════════════════════════════════════
+
+Project: [PROJECT_NAME]
+Date: [DATE]
+Auditor: AI-Powered Audit (codeaudit)
+
+════════════════════════════════════════════════════════════════════
+                         EXECUTIVE SUMMARY
+════════════════════════════════════════════════════════════════════
+
+Overall Health Score: [SCORE]/100 — [LABEL]
+
+[2-3 sentence summary of the project's overall health status,
+highlighting the most important strengths and concerns.]
+
+────────────────────────────────────────────────────────────────────
+SECTION SCORES
+────────────────────────────────────────────────────────────────────
+
+  Technology Stack & Config    [XX]/100  [Label]  (weight: 15%)
+  Architecture                 [XX]/100  [Label]  (weight: 18%)
+  Code Quality                 [XX]/100  [Label]  (weight: 15%)
+  Testing                      [XX]/100  [Label]  (weight: 15%)
+  Security                     [XX]/100  [Label]  (weight: 12%)
+  API & Data Layer             [XX]/100  [Label]  (weight: 10%)
+  CI/CD                        [XX]/100  [Label]  (weight:  5%)
+  Documentation                [XX]/100  [Label]  (weight:  5%)
+  Developer Experience         [XX]/100  [Label]  (weight:  5%)
+
+════════════════════════════════════════════════════════════════════
+                      1. TECHNOLOGY STACK & CONFIG
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+DETECTED STACK
+  Primary Language:   [language] ([version])
+  Framework:          [framework] ([version])
+  Build System:       [build tool]
+  Package Manager:    [manager]
+  Runtime:            [runtime] [version]
+
+CONFIGURATION ASSESSMENT
+  [Key findings about configuration quality, strictness, completeness]
+
+DEPENDENCY HEALTH
+  [Key findings about dependencies, outdated packages, security]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+  3. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                        2. ARCHITECTURE
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+ARCHITECTURAL PATTERN
+  [Detected pattern and assessment of its implementation]
+
+LAYER SEPARATION
+  [Assessment of layer boundaries and dependency direction]
+
+MODULARITY
+  [Assessment of module organization, coupling, cohesion]
+
+SOLID COMPLIANCE
+  [Summary of SOLID principle adherence]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+  3. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                        3. CODE QUALITY
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+LINTING & FORMATTING
+  [Assessment of linting and formatting setup]
+
+STATIC ANALYSIS
+  [Assessment of type safety and static analysis]
+
+CODE COMPLEXITY
+  [Assessment of code complexity metrics]
+
+CODE HEALTH
+  [Assessment of TODO/FIXME count, dead code, error handling]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+  3. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                          4. TESTING
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+TEST INFRASTRUCTURE
+  [Assessment of testing framework and configuration]
+
+TEST COVERAGE
+  [Assessment of test count, types, and coverage]
+
+TEST QUALITY
+  [Assessment of test patterns and quality from samples]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+  3. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                          5. SECURITY
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+SECRETS MANAGEMENT
+  [Assessment of secrets exposure and handling]
+
+AUTHENTICATION & AUTHORIZATION
+  [Assessment of auth mechanisms]
+
+INPUT VALIDATION
+  [Assessment of input validation and injection prevention]
+
+SECURITY CONFIGURATION
+  [Assessment of security headers, CORS, etc.]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+  3. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                      6. API & DATA LAYER
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+API DESIGN
+  [Assessment of API patterns, consistency, versioning]
+
+DATA LAYER
+  [Assessment of database access patterns, ORM usage, migrations]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                           7. CI/CD
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+PIPELINE OVERVIEW
+  [Assessment of CI/CD setup and stages]
+
+AUTOMATION
+  [Assessment of build, test, deploy automation]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                       8. DOCUMENTATION
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+PROJECT DOCUMENTATION
+  [Assessment of README, guides, API docs]
+
+CODE DOCUMENTATION
+  [Assessment of inline docs, comments, docstrings]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                    9. DEVELOPER EXPERIENCE
+════════════════════════════════════════════════════════════════════
+
+Score: [XX]/100 — [Label]
+
+ONBOARDING
+  [Assessment of developer onboarding experience]
+
+TOOLING
+  [Assessment of development tooling and DX]
+
+RECOMMENDATIONS
+  1. [Specific actionable recommendation]
+  2. [Specific actionable recommendation]
+
+════════════════════════════════════════════════════════════════════
+                    PRIORITY ACTION ITEMS
+════════════════════════════════════════════════════════════════════
+
+HIGH PRIORITY (address immediately)
+  1. [Most critical issue with specific fix]
+  2. [Second most critical issue]
+  3. [Third most critical issue]
+
+MEDIUM PRIORITY (address within sprint)
+  1. [Important improvement]
+  2. [Important improvement]
+  3. [Important improvement]
+
+LOW PRIORITY (address when possible)
+  1. [Nice-to-have improvement]
+  2. [Nice-to-have improvement]
+
+════════════════════════════════════════════════════════════════════
+                         END OF REPORT
+════════════════════════════════════════════════════════════════════
