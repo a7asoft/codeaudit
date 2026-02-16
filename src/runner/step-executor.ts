@@ -6,17 +6,6 @@ import type { PlanStep } from './plan-parser.js';
 import type { TokenUsage, StepResult } from './token-tracker.js';
 import type { StepStatus } from '../utils/progress-panel.js';
 
-interface ClaudeJsonOutput {
-  result?: string;
-  is_error?: boolean;
-  usage?: {
-    input_tokens?: number;
-    output_tokens?: number;
-    cache_read_input_tokens?: number;
-    cache_creation_input_tokens?: number;
-  };
-}
-
 function buildCleanEnv(): Record<string, string> {
   const env = { ...process.env } as Record<string, string>;
   delete env['CLAUDECODE'];
@@ -72,53 +61,11 @@ function buildPrompt(step: PlanStep, totalSteps: number, cwd: string, auditType:
   ].join('\n');
 }
 
-function buildAgentArgs(agent: ResolvedAgent): string[] {
-  switch (agent.name) {
-    case 'claude':
-      return [
-        '-p',
-        '--allowedTools', 'Read,Bash,Glob,Grep,Write',
-        '--output-format', 'json',
-        '--model', agent.model,
-        '--max-turns', '25',
-      ];
-    case 'cursor':
-      return ['--print', '--output-format', 'json'];
-    case 'gemini':
-      return ['-p', '--yolo', '-o', 'json'];
+function parseTokenUsage(stdout: string, agent: ResolvedAgent): TokenUsage {
+  if (agent.config.parseTokens) {
+    return agent.config.parseTokens(stdout);
   }
-}
-
-function parseTokenUsage(stdout: string, agentName: string): TokenUsage {
-  const defaults: TokenUsage = {
-    inputTokens: 0,
-    outputTokens: 0,
-    cacheReadTokens: 0,
-    cacheWriteTokens: 0,
-  };
-
-  if (agentName === 'claude') {
-    try {
-      const lines = stdout.trim().split('\n');
-      for (let i = lines.length - 1; i >= 0; i--) {
-        const line = lines[i].trim();
-        if (!line.startsWith('{')) continue;
-        const parsed: ClaudeJsonOutput = JSON.parse(line);
-        if (parsed.usage) {
-          return {
-            inputTokens: parsed.usage.input_tokens || 0,
-            outputTokens: parsed.usage.output_tokens || 0,
-            cacheReadTokens: parsed.usage.cache_read_input_tokens || 0,
-            cacheWriteTokens: parsed.usage.cache_creation_input_tokens || 0,
-          };
-        }
-      }
-    } catch {
-      // fallback to defaults
-    }
-  }
-
-  return defaults;
+  return { inputTokens: 0, outputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0 };
 }
 
 /**
@@ -134,7 +81,7 @@ export async function executeStep(options: {
   const { agent, step, totalSteps, cwd, auditType } = options;
   const cleanEnv = buildCleanEnv();
   const prompt = buildPrompt(step, totalSteps, cwd, auditType);
-  const args = buildAgentArgs(agent);
+  const args = agent.config.buildArgs(agent.model, prompt);
 
   const startTime = Date.now();
   let success = true;
@@ -143,7 +90,7 @@ export async function executeStep(options: {
   try {
     const result = await execa(agent.binary, args, {
       cwd,
-      input: prompt,
+      input: agent.config.promptVia === 'stdin' ? prompt : undefined,
       timeout: 600_000,
       reject: false,
       env: cleanEnv,
@@ -158,7 +105,7 @@ export async function executeStep(options: {
   }
 
   const durationMs = Date.now() - startTime;
-  const tokens = parseTokenUsage(stdout, agent.name);
+  const tokens = parseTokenUsage(stdout, agent);
 
   return {
     stepIndex: step.index,

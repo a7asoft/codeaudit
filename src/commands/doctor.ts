@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import { detectAgents } from '../agents/agent-detector.js';
+import { AGENTS } from '../agents/registry.js';
 import { which } from '../utils/platform.js';
 import { logger } from '../utils/logger.js';
 
@@ -42,12 +43,11 @@ export async function runDoctor(): Promise<void> {
 
   // AI Agents
   const agents = detectAgents();
-  const agentNames = ['claude', 'cursor', 'gemini'] as const;
 
-  for (const name of agentNames) {
-    const found = agents.find((a) => a.name === name);
+  for (const config of AGENTS) {
+    const found = agents.find((a) => a.name === config.name);
     checks.push({
-      name: `AI Agent: ${name}`,
+      name: `AI Agent: ${config.displayName}`,
       status: found ? 'ok' : 'fail',
       detail: found ? found.path : 'not found',
     });
@@ -58,7 +58,7 @@ export async function runDoctor(): Promise<void> {
   checks.push({
     name: 'Any AI agent available',
     status: hasAnyAgent ? 'ok' : 'fail',
-    detail: hasAnyAgent ? `${agents.length} agent(s) detected` : 'Install claude, cursor, or gemini CLI',
+    detail: hasAnyAgent ? `${agents.length} agent(s) detected` : 'Install at least one supported AI CLI',
   });
 
   // Print results

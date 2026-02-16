@@ -2,10 +2,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync, cpSync } from 'node
 import { join } from 'node:path';
 import { getGeminiDir } from '../utils/platform.js';
 import { BaseInstaller, type InstallerResult } from './base-installer.js';
-import type { AgentName } from './agent-detector.js';
 
 export class GeminiInstaller extends BaseInstaller {
-  readonly agentName: AgentName = 'gemini';
+  readonly agentName = 'gemini';
 
   async install(auditType: string): Promise<InstallerResult> {
     const geminiDir = getGeminiDir();

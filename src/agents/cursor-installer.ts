@@ -2,10 +2,9 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { getCursorCommandsDir } from '../utils/platform.js';
 import { BaseInstaller, type InstallerResult } from './base-installer.js';
-import type { AgentName } from './agent-detector.js';
 
 export class CursorInstaller extends BaseInstaller {
-  readonly agentName: AgentName = 'cursor';
+  readonly agentName = 'cursor';
 
   async install(auditType: string): Promise<InstallerResult> {
     const commandsDir = getCursorCommandsDir();

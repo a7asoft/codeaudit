@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import { printBanner } from './utils/banner.js';
 import { checkForUpdates } from './utils/update-notifier.js';
+import { getAgentNames } from './agents/registry.js';
 import { runAudit } from './commands/run.js';
 import { runDoctor } from './commands/doctor.js';
 import { listAudits } from './commands/list.js';
@@ -11,11 +12,12 @@ import { runUpdate } from './commands/update.js';
 import { runUninstall } from './commands/uninstall.js';
 
 const program = new Command();
+const agentList = getAgentNames().join(', ');
 
 program
   .name('codeaudit')
   .description('Universal AI-Powered Project Audit CLI')
-  .version('0.2.0')
+  .version('0.3.0')
   .hook('preAction', (thisCommand, actionCommand) => {
     // Skip banner for the default action (no subcommand) — it prints its own
     if (actionCommand !== program) {
@@ -29,7 +31,7 @@ program
 program
   .command('run <type>')
   .description('Run an audit (health, practices)')
-  .option('-a, --agent <agent>', 'AI agent to use (claude, cursor, gemini)')
+  .option('-a, --agent <agent>', `AI agent to use (${agentList})`)
   .option('-m, --model <model>', 'Model to use')
   .action(async (type: string, opts) => {
     await runAudit(type, opts);
@@ -58,7 +60,7 @@ program
 
 program
   .command('install <agent>')
-  .description('Install audit skills to a specific AI agent (claude, cursor, gemini)')
+  .description(`Install audit skills to a specific AI agent (${agentList})`)
   .action(async (agent: string) => {
     await runInstall(agent);
   });
@@ -95,7 +97,7 @@ program.action(() => {
   console.log(`    ${green('doctor')}              Check environment and AI tools`);
   console.log(`    ${green('list')}                List available audit types`);
   console.log(`    ${green('init')}                Detect AI tools and install skills`);
-  console.log(`    ${green('install')} ${cyan('<agent>')}   Install skills to an agent ${dim('(claude, cursor, gemini)')}`);
+  console.log(`    ${green('install')} ${cyan('<agent>')}   Install skills to an agent`);
   console.log(`    ${green('update')}              Update to the latest version`);
   console.log(`    ${green('uninstall')}           Remove codeaudit from your system`);
   console.log();
@@ -106,10 +108,13 @@ program.action(() => {
   console.log(`    ${yellow('-V, --version')}         Show version number`);
   console.log(`    ${yellow('-h, --help')}            Show help for a command`);
   console.log();
+  console.log(dim('  Supported agents:'), dim(agentList));
+  console.log();
   console.log(dim('  Examples:'));
   console.log();
   console.log(dim('    $ codeaudit run health'));
   console.log(dim('    $ codeaudit run practices --agent claude --model sonnet'));
+  console.log(dim('    $ codeaudit run health --agent codex --model o3'));
   console.log(dim('    $ codeaudit doctor'));
   console.log();
 });

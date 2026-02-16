@@ -1,27 +1,21 @@
 import { which } from '../utils/platform.js';
-
-export type AgentName = 'claude' | 'cursor' | 'gemini';
+import { AGENTS, type AgentConfig } from './registry.js';
 
 export interface DetectedAgent {
-  name: AgentName;
+  name: string;
   binary: string;
   path: string;
+  config: AgentConfig;
 }
-
-const AGENT_BINARIES: Record<AgentName, string[]> = {
-  claude: ['claude'],
-  cursor: ['cursor-agent', 'cursor'],
-  gemini: ['gemini'],
-};
 
 export function detectAgents(): DetectedAgent[] {
   const detected: DetectedAgent[] = [];
 
-  for (const [name, binaries] of Object.entries(AGENT_BINARIES)) {
-    for (const binary of binaries) {
+  for (const config of AGENTS) {
+    for (const binary of config.binaries) {
       const path = which(binary);
       if (path) {
-        detected.push({ name: name as AgentName, binary, path });
+        detected.push({ name: config.name, binary, path, config });
         break;
       }
     }
@@ -30,7 +24,8 @@ export function detectAgents(): DetectedAgent[] {
   return detected;
 }
 
-export function isAgentAvailable(name: AgentName): boolean {
-  const binaries = AGENT_BINARIES[name];
-  return binaries.some((b) => which(b) !== null);
+export function isAgentAvailable(name: string): boolean {
+  const config = AGENTS.find((a) => a.name === name);
+  if (!config) return false;
+  return config.binaries.some((b) => which(b) !== null);
 }

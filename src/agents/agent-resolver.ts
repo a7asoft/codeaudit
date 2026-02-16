@@ -1,18 +1,14 @@
 import inquirer from 'inquirer';
-import { detectAgents, type AgentName, type DetectedAgent } from './agent-detector.js';
+import { detectAgents, type DetectedAgent } from './agent-detector.js';
+import { type AgentConfig } from './registry.js';
 import { logger } from '../utils/logger.js';
 
 export interface ResolvedAgent {
-  name: AgentName;
+  name: string;
   binary: string;
   model: string;
+  config: AgentConfig;
 }
-
-const DEFAULT_MODELS: Record<AgentName, string[]> = {
-  claude: ['sonnet', 'opus', 'haiku'],
-  cursor: ['sonnet', 'gpt-4o', 'gemini-pro'],
-  gemini: ['gemini-2.5-pro', 'gemini-2.5-flash'],
-};
 
 export async function resolveAgent(options: {
   agent?: string;
@@ -42,7 +38,7 @@ export async function resolveAgent(options: {
         type: 'list',
         name: 'agentChoice',
         message: 'Select AI agent:',
-        choices: detected.map((a) => ({ name: `${a.name} (${a.path})`, value: a.name })),
+        choices: detected.map((a) => ({ name: `${a.config.displayName} (${a.path})`, value: a.name })),
       },
     ]);
     selectedAgent = detected.find((a) => a.name === agentChoice)!;
@@ -53,7 +49,7 @@ export async function resolveAgent(options: {
   if (options.model) {
     model = options.model;
   } else {
-    const models = DEFAULT_MODELS[selectedAgent.name];
+    const models = selectedAgent.config.models;
     const { modelChoice } = await inquirer.prompt([
       {
         type: 'list',
@@ -69,5 +65,6 @@ export async function resolveAgent(options: {
     name: selectedAgent.name,
     binary: selectedAgent.binary,
     model,
+    config: selectedAgent.config,
   };
 }

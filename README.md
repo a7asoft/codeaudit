@@ -12,11 +12,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg)](https://nodejs.org)
-[![Version](https://img.shields.io/badge/version-0.2.0-purple.svg)](https://github.com/a7asoft/codeaudit/releases)
+[![Version](https://img.shields.io/badge/version-0.3.0-purple.svg)](https://github.com/a7asoft/codeaudit/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)](https://github.com/a7asoft/codeaudit/pulls)
 
 **Run comprehensive health audits and best practices checks on any software project.**
-**Works with Claude Code, Cursor, and Gemini CLI.**
+**Works with Claude Code, Cursor, Gemini CLI, Codex, Cline, Goose, Aider, Copilot, and Qwen.**
 
 [Installation](#-installation) &bull; [Quick Start](#-quick-start) &bull; [Commands](#-commands) &bull; [How It Works](#-how-it-works) &bull; [Audit Types](#-audit-types)
 
@@ -71,7 +71,7 @@
 |  | Feature | Description |
 |--|---------|-------------|
 | 🌐 | **Universal** | Works with any language — Node.js, Python, Go, Rust, Java, Kotlin, Flutter, .NET, and more |
-| 🤖 | **AI-Agnostic** | Supports Claude Code, Cursor, and Gemini CLI as audit engines |
+| 🤖 | **AI-Agnostic** | Supports 9 AI agents: Claude Code, Cursor, Gemini, Codex, Cline, Goose, Aider, Copilot, Qwen |
 | 📝 | **Pure Markdown Rules** | Audit rules are `.md` files — no proprietary format, fully transparent |
 | 🔌 | **Installable Skills** | Install audit capabilities directly into your AI tools |
 | 📊 | **Detailed Reports** | Generates plain-text reports ready for Google Docs |
@@ -148,7 +148,7 @@ codeaudit run health --agent claude --model sonnet
 
 | Flag | Description |
 |------|-------------|
-| `-a, --agent <agent>` | AI agent to use (`claude`, `cursor`, `gemini`) |
+| `-a, --agent <agent>` | AI agent to use (`claude`, `cursor`, `gemini`, `codex`, `cline`, `goose`, `aider`, `copilot`, `qwen`) |
 | `-m, --model <model>` | Model to use (`sonnet`, `opus`, `haiku`, etc.) |
 | `-V, --version` | Show version number |
 | `-h, --help` | Show help |
@@ -173,7 +173,7 @@ codeaudit run health --agent claude --model sonnet
 ```
 
 1. **Parse** `plan.md` — ordered list of audit steps
-2. **Detect** AI agent — finds available CLI (claude, cursor, gemini)
+2. **Detect** AI agent — finds available CLI (9 supported agents)
 3. **Execute** each step — spawns AI process with the rule `.md` file
 4. **Inject** prior artifacts — each step gets context from completed steps
 5. **Generate** report — compiles all artifacts into final plain-text report
@@ -244,37 +244,17 @@ The audit is **evidence-based and aggressive** — scores are backed by specific
 
 ## Supported AI Agents
 
-<table>
-<tr>
-<td align="center" width="200">
-
-**Claude Code**
-
-`codeaudit run health --agent claude`
-
-Sonnet, Opus, Haiku
-
-</td>
-<td align="center" width="200">
-
-**Cursor**
-
-`codeaudit run health --agent cursor`
-
-Default model
-
-</td>
-<td align="center" width="200">
-
-**Gemini CLI**
-
-`codeaudit run health --agent gemini`
-
-Pro, Flash
-
-</td>
-</tr>
-</table>
+| Agent | Command | Models |
+|-------|---------|--------|
+| **Claude Code** | `--agent claude` | sonnet, opus, haiku |
+| **Cursor** | `--agent cursor` | sonnet, gpt-4o, gemini-pro |
+| **Gemini CLI** | `--agent gemini` | gemini-2.5-pro, gemini-2.5-flash |
+| **OpenAI Codex** | `--agent codex` | gpt-5.2-codex, gpt-5-codex, o3, o4-mini |
+| **Cline** | `--agent cline` | claude-sonnet-4-5, gpt-4o, gemini-2.5-pro |
+| **Goose** | `--agent goose` | claude-sonnet-4-5, gpt-4o, gemini-2.5-pro |
+| **Aider** | `--agent aider` | claude-sonnet-4-5, gpt-4o, deepseek-chat |
+| **GitHub Copilot** | `--agent copilot` | claude-sonnet-4, gpt-5 |
+| **Qwen Code** | `--agent qwen` | qwen3-coder, qwen3-coder-next |
 
 ---
 
@@ -313,6 +293,12 @@ codeaudit/
   - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (recommended)
   - [Cursor](https://cursor.com)
   - [Gemini CLI](https://github.com/google-gemini/gemini-cli)
+  - [OpenAI Codex](https://github.com/openai/codex)
+  - [Cline](https://github.com/cline/cline)
+  - [Goose](https://github.com/block/goose)
+  - [Aider](https://github.com/paul-gauthier/aider)
+  - [GitHub Copilot](https://github.com/features/copilot)
+  - [Qwen Code](https://github.com/QwenLM/Qwen)
 
 ---
 

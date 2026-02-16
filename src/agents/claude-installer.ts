@@ -2,10 +2,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync, cpSync } from 'node
 import { join } from 'node:path';
 import { getClaudeSkillsDir } from '../utils/platform.js';
 import { BaseInstaller, type InstallerResult } from './base-installer.js';
-import type { AgentName } from './agent-detector.js';
 
 export class ClaudeInstaller extends BaseInstaller {
-  readonly agentName: AgentName = 'claude';
+  readonly agentName = 'claude';
 
   async install(auditType: string): Promise<InstallerResult> {
     const skillsDir = getClaudeSkillsDir();

@@ -1,15 +1,6 @@
 import chalk from 'chalk';
 import { detectAgents } from '../agents/agent-detector.js';
-import { ClaudeInstaller } from '../agents/claude-installer.js';
-import { CursorInstaller } from '../agents/cursor-installer.js';
-import { GeminiInstaller } from '../agents/gemini-installer.js';
 import { logger } from '../utils/logger.js';
-
-const INSTALLERS = {
-  claude: new ClaudeInstaller(),
-  cursor: new CursorInstaller(),
-  gemini: new GeminiInstaller(),
-} as const;
 
 export async function runInit(): Promise<void> {
   logger.info('Detecting AI tools...');
@@ -18,12 +9,12 @@ export async function runInit(): Promise<void> {
   const agents = detectAgents();
 
   if (agents.length === 0) {
-    logger.error('No AI agents detected. Install at least one: claude, cursor, or gemini.');
+    logger.error('No AI agents detected. Install at least one supported AI CLI.');
     return;
   }
 
   for (const agent of agents) {
-    logger.success(`Found ${chalk.bold(agent.name)} at ${chalk.dim(agent.path)}`);
+    logger.success(`Found ${chalk.bold(agent.config.displayName)} at ${chalk.dim(agent.path)}`);
   }
 
   logger.blank();
@@ -33,19 +24,24 @@ export async function runInit(): Promise<void> {
   const auditTypes = ['health', 'practices'];
 
   for (const agent of agents) {
-    const installer = INSTALLERS[agent.name];
+    if (!agent.config.installer) {
+      logger.warn(`${chalk.bold(agent.config.displayName)}: no installer available, skipping`);
+      continue;
+    }
+
+    const installer = agent.config.installer();
 
     for (const auditType of auditTypes) {
       try {
         const result = await installer.install(auditType);
         if (result.success) {
-          logger.success(`${chalk.bold(agent.name)}/${auditType}: ${chalk.dim(result.installedPath)}`);
+          logger.success(`${chalk.bold(agent.config.displayName)}/${auditType}: ${chalk.dim(result.installedPath)}`);
         } else {
-          logger.warn(`${agent.name}/${auditType}: ${result.message}`);
+          logger.warn(`${agent.config.displayName}/${auditType}: ${result.message}`);
         }
       } catch (err: unknown) {
         const message = err instanceof Error ? err.message : 'Unknown error';
-        logger.error(`${agent.name}/${auditType}: ${message}`);
+        logger.error(`${agent.config.displayName}/${auditType}: ${message}`);
       }
     }
   }

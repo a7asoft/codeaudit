@@ -38,7 +38,7 @@ export async function runAudit(
   const agent = await resolveAgent(options);
 
   logger.info(`Running ${chalk.bold(auditType)} audit on ${chalk.dim(cwd)}`);
-  logger.info(`Using ${chalk.bold(agent.name)} with model ${chalk.bold(agent.model)}`);
+  logger.info(`Using ${chalk.bold(agent.config.displayName)} with model ${chalk.bold(agent.model)}`);
   logger.blank();
 
   // Create panel and tracker

@@ -1,34 +1,28 @@
 import chalk from 'chalk';
-import { isAgentAvailable, type AgentName } from '../agents/agent-detector.js';
-import { ClaudeInstaller } from '../agents/claude-installer.js';
-import { CursorInstaller } from '../agents/cursor-installer.js';
-import { GeminiInstaller } from '../agents/gemini-installer.js';
+import { isAgentAvailable } from '../agents/agent-detector.js';
+import { getAgent, getAgentNames } from '../agents/registry.js';
 import { logger } from '../utils/logger.js';
 
-const INSTALLERS = {
-  claude: new ClaudeInstaller(),
-  cursor: new CursorInstaller(),
-  gemini: new GeminiInstaller(),
-} as const;
-
-const VALID_AGENTS: AgentName[] = ['claude', 'cursor', 'gemini'];
-
 export async function runInstall(agent: string): Promise<void> {
-  if (!VALID_AGENTS.includes(agent as AgentName)) {
-    logger.error(`Unknown agent "${agent}". Valid agents: ${VALID_AGENTS.join(', ')}`);
+  const config = getAgent(agent);
+  if (!config) {
+    logger.error(`Unknown agent "${agent}". Valid agents: ${getAgentNames().join(', ')}`);
     return;
   }
 
-  const agentName = agent as AgentName;
-
-  if (!isAgentAvailable(agentName)) {
-    logger.warn(`${chalk.bold(agentName)} CLI not found in PATH. Installing skills anyway...`);
+  if (!config.installer) {
+    logger.warn(`No installer available for ${chalk.bold(config.displayName)}. It can still be used as an audit engine.`);
+    return;
   }
 
-  const installer = INSTALLERS[agentName];
+  if (!isAgentAvailable(agent)) {
+    logger.warn(`${chalk.bold(config.displayName)} CLI not found in PATH. Installing skills anyway...`);
+  }
+
+  const installer = config.installer();
   const auditTypes = ['health', 'practices'];
 
-  logger.info(`Installing audit skills for ${chalk.bold(agentName)}...`);
+  logger.info(`Installing audit skills for ${chalk.bold(config.displayName)}...`);
   logger.blank();
 
   for (const auditType of auditTypes) {
@@ -46,5 +40,5 @@ export async function runInstall(agent: string): Promise<void> {
   }
 
   logger.blank();
-  logger.success(`Skills installed for ${chalk.bold(agentName)}!`);
+  logger.success(`Skills installed for ${chalk.bold(config.displayName)}!`);
 }
