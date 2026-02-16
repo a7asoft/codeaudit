@@ -87,7 +87,7 @@ export async function runAudit(
     passed: tracker.getSuccessCount(),
     failed: tracker.getFailureCount(),
     duration: tracker.getTotalDurationMs(),
-    tokens: totals.inputTokens + totals.outputTokens,
+    tokens: totals.inputTokens + totals.outputTokens + totals.cacheReadTokens,
     cost: tracker.estimateCost(agent.model),
     reportPath,
     reportExists: existsSync(fullReportPath),
