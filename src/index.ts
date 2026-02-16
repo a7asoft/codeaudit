@@ -15,7 +15,7 @@ const program = new Command();
 program
   .name('codeaudit')
   .description('Universal AI-Powered Project Audit CLI')
-  .version('0.1.0')
+  .version('0.2.0')
   .hook('preAction', (thisCommand, actionCommand) => {
     // Skip banner for the default action (no subcommand) — it prints its own
     if (actionCommand !== program) {

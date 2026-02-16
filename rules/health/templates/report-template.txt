@@ -1,229 +1,352 @@
-════════════════════════════════════════════════════════════════════
-                     PROJECT HEALTH AUDIT REPORT
-════════════════════════════════════════════════════════════════════
+PROJECT HEALTH AUDIT REPORT
 
-Project: [PROJECT_NAME]
-Date: [DATE]
-Auditor: AI-Powered Audit (codeaudit)
+IMPORTANT EXCLUSIONS:
+- NEVER recommend CODEOWNERS or SECURITY.md files (governance decisions,
+  not technical requirements)
+- NEVER recommend deployment-specific workflows (deployment decisions,
+  not technical requirements)
 
-════════════════════════════════════════════════════════════════════
-                         EXECUTIVE SUMMARY
-════════════════════════════════════════════════════════════════════
+1. Executive Summary
 
-Overall Health Score: [SCORE]/100 — [LABEL]
+Description: [Comprehensive analysis of [Project Name] [single app/monorepo]
+demonstrating [key characteristics].]
 
-[2-3 sentence summary of the project's overall health status,
-highlighting the most important strengths and concerns.]
+Overall Score: [Score]/100 ([Label])
 
-────────────────────────────────────────────────────────────────────
-SECTION SCORES
-────────────────────────────────────────────────────────────────────
+Top Strengths:
+- [Strength 1]
+- [Strength 2]
+- [Strength 3]
 
-  Technology Stack & Config    [XX]/100  [Label]  (weight: 15%)
-  Architecture                 [XX]/100  [Label]  (weight: 18%)
-  Code Quality                 [XX]/100  [Label]  (weight: 15%)
-  Testing                      [XX]/100  [Label]  (weight: 15%)
-  Security                     [XX]/100  [Label]  (weight: 12%)
-  API & Data Layer             [XX]/100  [Label]  (weight: 10%)
-  CI/CD                        [XX]/100  [Label]  (weight:  5%)
-  Documentation                [XX]/100  [Label]  (weight:  5%)
-  Developer Experience         [XX]/100  [Label]  (weight:  5%)
+Top Risks:
+- [Risk 1]
+- [Risk 2]
+- [Risk 3]
 
-════════════════════════════════════════════════════════════════════
-                      1. TECHNOLOGY STACK & CONFIG
-════════════════════════════════════════════════════════════════════
+Priority Recommendations:
+1. [Recommendation 1]
+2. [Recommendation 2]
+3. [Recommendation 3]
 
-Score: [XX]/100 — [Label]
+2. At-a-Glance Scorecard
 
-DETECTED STACK
-  Primary Language:   [language] ([version])
-  Framework:          [framework] ([version])
-  Build System:       [build tool]
-  Package Manager:    [manager]
-  Runtime:            [runtime] [version]
+- Technology Stack & Config: [Score]/100 ([Label])     weight: 15%
+- Architecture:              [Score]/100 ([Label])     weight: 18%
+- Code Quality:              [Score]/100 ([Label])     weight: 15%
+- Testing:                   [Score]/100 ([Label])     weight: 15%
+- Security:                  [Score]/100 ([Label])     weight: 12%
+- API & Data Layer:          [Score]/100 ([Label])     weight: 10%
+- CI/CD:                     [Score]/100 ([Label])     weight:  5%
+- Documentation:             [Score]/100 ([Label])     weight:  5%
+- Developer Experience:      [Score]/100 ([Label])     weight:  5%
+- Overall:                   [Score]/100 ([Label])
 
-CONFIGURATION ASSESSMENT
-  [Key findings about configuration quality, strictness, completeness]
+3. Technology Stack & Config
 
-DEPENDENCY HEALTH
-  [Key findings about dependencies, outdated packages, security]
+Description: [One-sentence description of the tech stack analysis].
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
-  3. [Specific actionable recommendation]
+Score: [Score]/100 ([Label])
 
-════════════════════════════════════════════════════════════════════
-                        2. ARCHITECTURE
-════════════════════════════════════════════════════════════════════
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-Score: [XX]/100 — [Label]
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
 
-ARCHITECTURAL PATTERN
-  [Detected pattern and assessment of its implementation]
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-LAYER SEPARATION
-  [Assessment of layer boundaries and dependency direction]
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
 
-MODULARITY
-  [Assessment of module organization, coupling, cohesion]
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
 
-SOLID COMPLIANCE
-  [Summary of SOLID principle adherence]
+4. Architecture
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
-  3. [Specific actionable recommendation]
+Description: [One-sentence description of the architecture analysis].
 
-════════════════════════════════════════════════════════════════════
-                        3. CODE QUALITY
-════════════════════════════════════════════════════════════════════
+Score: [Score]/100 ([Label])
 
-Score: [XX]/100 — [Label]
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-LINTING & FORMATTING
-  [Assessment of linting and formatting setup]
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
 
-STATIC ANALYSIS
-  [Assessment of type safety and static analysis]
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-CODE COMPLEXITY
-  [Assessment of code complexity metrics]
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
 
-CODE HEALTH
-  [Assessment of TODO/FIXME count, dead code, error handling]
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
-  3. [Specific actionable recommendation]
+5. Code Quality
 
-════════════════════════════════════════════════════════════════════
-                          4. TESTING
-════════════════════════════════════════════════════════════════════
+Description: [One-sentence description of the code quality analysis].
 
-Score: [XX]/100 — [Label]
+Score: [Score]/100 ([Label])
 
-TEST INFRASTRUCTURE
-  [Assessment of testing framework and configuration]
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-TEST COVERAGE
-  [Assessment of test count, types, and coverage]
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
 
-TEST QUALITY
-  [Assessment of test patterns and quality from samples]
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
-  3. [Specific actionable recommendation]
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
 
-════════════════════════════════════════════════════════════════════
-                          5. SECURITY
-════════════════════════════════════════════════════════════════════
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
 
-Score: [XX]/100 — [Label]
+6. Testing
 
-SECRETS MANAGEMENT
-  [Assessment of secrets exposure and handling]
+Description: [One-sentence description of the testing analysis].
 
-AUTHENTICATION & AUTHORIZATION
-  [Assessment of auth mechanisms]
+Score: [Score]/100 ([Label])
 
-INPUT VALIDATION
-  [Assessment of input validation and injection prevention]
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-SECURITY CONFIGURATION
-  [Assessment of security headers, CORS, etc.]
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
-  3. [Specific actionable recommendation]
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-════════════════════════════════════════════════════════════════════
-                      6. API & DATA LAYER
-════════════════════════════════════════════════════════════════════
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
 
-Score: [XX]/100 — [Label]
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
 
-API DESIGN
-  [Assessment of API patterns, consistency, versioning]
+7. Security
 
-DATA LAYER
-  [Assessment of database access patterns, ORM usage, migrations]
+Description: [One-sentence description of the security analysis].
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
+Score: [Score]/100 ([Label])
 
-════════════════════════════════════════════════════════════════════
-                           7. CI/CD
-════════════════════════════════════════════════════════════════════
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-Score: [XX]/100 — [Label]
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
 
-PIPELINE OVERVIEW
-  [Assessment of CI/CD setup and stages]
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-AUTOMATION
-  [Assessment of build, test, deploy automation]
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
 
-════════════════════════════════════════════════════════════════════
-                       8. DOCUMENTATION
-════════════════════════════════════════════════════════════════════
+8. API & Data Layer
 
-Score: [XX]/100 — [Label]
+Description: [One-sentence description of the API and data layer analysis].
 
-PROJECT DOCUMENTATION
-  [Assessment of README, guides, API docs]
+Score: [Score]/100 ([Label])
 
-CODE DOCUMENTATION
-  [Assessment of inline docs, comments, docstrings]
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
 
-════════════════════════════════════════════════════════════════════
-                    9. DEVELOPER EXPERIENCE
-════════════════════════════════════════════════════════════════════
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-Score: [XX]/100 — [Label]
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
 
-ONBOARDING
-  [Assessment of developer onboarding experience]
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
 
-TOOLING
-  [Assessment of development tooling and DX]
+9. CI/CD
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
+Description: [One-sentence description of the CI/CD analysis].
 
-════════════════════════════════════════════════════════════════════
-                    PRIORITY ACTION ITEMS
-════════════════════════════════════════════════════════════════════
+Score: [Score]/100 ([Label])
 
-HIGH PRIORITY (address immediately)
-  1. [Most critical issue with specific fix]
-  2. [Second most critical issue]
-  3. [Third most critical issue]
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-MEDIUM PRIORITY (address within sprint)
-  1. [Important improvement]
-  2. [Important improvement]
-  3. [Important improvement]
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
 
-LOW PRIORITY (address when possible)
-  1. [Nice-to-have improvement]
-  2. [Nice-to-have improvement]
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-════════════════════════════════════════════════════════════════════
-                         END OF REPORT
-════════════════════════════════════════════════════════════════════
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
+
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
+
+10. Documentation
+
+Description: [One-sentence description of the documentation analysis].
+
+Score: [Score]/100 ([Label])
+
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
+
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
+
+Risks:
+- [Risk item 1]
+- [Risk item 2]
+
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
+
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
+
+11. Developer Experience
+
+Description: [One-sentence description of the developer experience analysis].
+
+Score: [Score]/100 ([Label])
+
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
+
+Evidence:
+- [File path or configuration reference]
+- [Specific evidence item]
+
+Risks:
+- [Risk item 1]
+- [Risk item 2]
+
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
+
+12. Quality Index
+
+Summary of all section scores with interpretation:
+
+- Technology Stack & Config: [Score]/100 ([Label]) -- [one-line interpretation]
+- Architecture:              [Score]/100 ([Label]) -- [one-line interpretation]
+- Code Quality:              [Score]/100 ([Label]) -- [one-line interpretation]
+- Testing:                   [Score]/100 ([Label]) -- [one-line interpretation]
+- Security:                  [Score]/100 ([Label]) -- [one-line interpretation]
+- API & Data Layer:          [Score]/100 ([Label]) -- [one-line interpretation]
+- CI/CD:                     [Score]/100 ([Label]) -- [one-line interpretation]
+- Documentation:             [Score]/100 ([Label]) -- [one-line interpretation]
+- Developer Experience:      [Score]/100 ([Label]) -- [one-line interpretation]
+
+Overall: [Score]/100 ([Label])
+
+13. Risks & Opportunities
+
+Top Risks:
+1. [Risk with context and impact]
+2. [Risk with context and impact]
+3. [Risk with context and impact]
+
+Top Opportunities:
+1. [Opportunity with expected benefit]
+2. [Opportunity with expected benefit]
+3. [Opportunity with expected benefit]
+
+14. Recommendations
+
+Prioritized, actionable recommendations:
+
+HIGH PRIORITY (address immediately):
+1. [Recommendation with specific action and expected impact]
+2. [Recommendation with specific action and expected impact]
+3. [Recommendation with specific action and expected impact]
+
+MEDIUM PRIORITY (address within sprint):
+1. [Recommendation]
+2. [Recommendation]
+3. [Recommendation]
+
+LOW PRIORITY (address when possible):
+1. [Recommendation]
+2. [Recommendation]
+
+15. Appendix: Evidence Index
+
+Files and references organized by area:
+
+Technology Stack:
+- [file path: what was found]
+
+Architecture:
+- [file path: what was found]
+
+Code Quality:
+- [file path: what was found]
+
+Testing:
+- [file path: what was found]
+
+Security:
+- [file path: what was found]
+
+CI/CD:
+- [file path: what was found]
+
+Documentation:
+- [file path: what was found]

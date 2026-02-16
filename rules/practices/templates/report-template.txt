@@ -1,126 +1,185 @@
-════════════════════════════════════════════════════════════════════
-                  BEST PRACTICES AUDIT REPORT
-════════════════════════════════════════════════════════════════════
+BEST PRACTICES AUDIT REPORT
 
-Project: [PROJECT_NAME]
-Date: [DATE]
-Auditor: AI-Powered Audit (codeaudit)
+IMPORTANT EXCLUSIONS:
+- NEVER recommend CODEOWNERS or SECURITY.md files (governance decisions,
+  not technical requirements)
+- NEVER recommend deployment-specific workflows (deployment decisions,
+  not technical requirements)
 
-════════════════════════════════════════════════════════════════════
-                         EXECUTIVE SUMMARY
-════════════════════════════════════════════════════════════════════
+1. Executive Summary
 
-Overall Score: [SCORE]/100 — [LABEL]
+Description: [Comprehensive code quality analysis of [Project Name]
+demonstrating [key characteristics].]
 
-[2-3 sentence summary of the project's code quality status,
-highlighting the most important strengths and concerns.]
+Overall Score: [Score]/100 ([Label])
 
-────────────────────────────────────────────────────────────────────
-SECTION SCORES
-────────────────────────────────────────────────────────────────────
+Top Strengths:
+- [Strength 1]
+- [Strength 2]
+- [Strength 3]
 
-  Testing Quality              [XX]/100  [Label]  (weight: 35%)
-  Architecture Compliance      [XX]/100  [Label]  (weight: 35%)
-  Code Standards               [XX]/100  [Label]  (weight: 30%)
+Top Risks:
+- [Risk 1]
+- [Risk 2]
+- [Risk 3]
 
-════════════════════════════════════════════════════════════════════
-                     1. TESTING QUALITY
-════════════════════════════════════════════════════════════════════
+Priority Recommendations:
+1. [Recommendation 1]
+2. [Recommendation 2]
+3. [Recommendation 3]
 
-Score: [XX]/100 — [Label]
+2. At-a-Glance Scorecard
 
-COVERAGE
-  [Assessment of test coverage breadth and depth]
+- Testing Quality:           [Score]/100 ([Label])     weight: 35%
+- Architecture Compliance:   [Score]/100 ([Label])     weight: 35%
+- Code Standards:            [Score]/100 ([Label])     weight: 30%
+- Overall:                   [Score]/100 ([Label])
 
-QUALITY PATTERNS
-  [Assessment of test quality, AAA pattern, naming, assertions]
+3. Testing Quality
 
-EDGE CASES
-  [Assessment of edge case coverage]
+Description: [One-sentence description of the testing quality analysis].
 
-MOCKING STRATEGY
-  [Assessment of mock/stub usage and quality]
+Score: [Score]/100 ([Label])
 
-VIOLATIONS FOUND
-  [file:line — description — severity]
-  [file:line — description — severity]
-  ...
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
-  3. [Specific actionable recommendation]
+Evidence:
+- [File path or test file reference]
+- [Specific evidence item]
 
-════════════════════════════════════════════════════════════════════
-                  2. ARCHITECTURE COMPLIANCE
-════════════════════════════════════════════════════════════════════
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-Score: [XX]/100 — [Label]
+Violations Found:
+- [file:line -- description -- severity]
+- [file:line -- description -- severity]
 
-PATTERN ADHERENCE
-  [Assessment of architectural pattern consistency]
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
 
-LAYER BOUNDARIES
-  [Assessment of layer boundary compliance]
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
 
-DEPENDENCY RULES
-  [Assessment of dependency direction and injection]
+4. Architecture Compliance
 
-VIOLATIONS FOUND
-  [file:line — description — severity]
-  [file:line — description — severity]
-  ...
+Description: [One-sentence description of the architecture compliance analysis].
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
-  3. [Specific actionable recommendation]
+Score: [Score]/100 ([Label])
 
-════════════════════════════════════════════════════════════════════
-                      3. CODE STANDARDS
-════════════════════════════════════════════════════════════════════
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-Score: [XX]/100 — [Label]
+Evidence:
+- [File path or import reference]
+- [Specific evidence item]
 
-NAMING CONVENTIONS
-  [Assessment of naming consistency and quality]
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-ERROR HANDLING
-  [Assessment of error handling patterns]
+Violations Found:
+- [file:line -- description -- severity]
+- [file:line -- description -- severity]
 
-IMPLEMENTATION QUALITY
-  [Assessment of function length, nesting, DRY]
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
 
-TYPE SAFETY
-  [Assessment of type system usage]
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
 
-VIOLATIONS FOUND
-  [file:line — description — severity]
-  [file:line — description — severity]
-  ...
+5. Code Standards
 
-RECOMMENDATIONS
-  1. [Specific actionable recommendation]
-  2. [Specific actionable recommendation]
-  3. [Specific actionable recommendation]
+Description: [One-sentence description of the code standards analysis].
 
-════════════════════════════════════════════════════════════════════
-                    PRIORITY ACTION ITEMS
-════════════════════════════════════════════════════════════════════
+Score: [Score]/100 ([Label])
 
-HIGH PRIORITY (address immediately)
-  1. [Most critical violation with file:line and fix]
-  2. [Second most critical violation]
-  3. [Third most critical violation]
+Key Findings:
+- [Finding 1]
+- [Finding 2]
+- [Finding 3]
 
-MEDIUM PRIORITY (address within sprint)
-  1. [Important improvement]
-  2. [Important improvement]
+Evidence:
+- [File path or code reference]
+- [Specific evidence item]
 
-LOW PRIORITY (address when possible)
-  1. [Nice-to-have improvement]
-  2. [Nice-to-have improvement]
+Risks:
+- [Risk item 1]
+- [Risk item 2]
 
-════════════════════════════════════════════════════════════════════
-                         END OF REPORT
-════════════════════════════════════════════════════════════════════
+Violations Found:
+- [file:line -- description -- severity]
+- [file:line -- description -- severity]
+
+Recommendations:
+- [Recommendation 1]
+- [Recommendation 2]
+
+Counts & Metrics:
+- [Metric name]: [Value]
+- [Metric name]: [Value]
+
+6. Quality Index
+
+Summary of all section scores with interpretation:
+
+- Testing Quality:           [Score]/100 ([Label]) -- [one-line interpretation]
+- Architecture Compliance:   [Score]/100 ([Label]) -- [one-line interpretation]
+- Code Standards:            [Score]/100 ([Label]) -- [one-line interpretation]
+
+Overall: [Score]/100 ([Label])
+
+7. All Violations
+
+Complete list of all violations found, sorted by severity:
+
+HIGH:
+- [file:line -- description -- recommendation]
+- [file:line -- description -- recommendation]
+
+MEDIUM:
+- [file:line -- description -- recommendation]
+- [file:line -- description -- recommendation]
+
+LOW:
+- [file:line -- description -- recommendation]
+- [file:line -- description -- recommendation]
+
+8. Recommendations
+
+Prioritized, actionable recommendations:
+
+HIGH PRIORITY (address immediately):
+1. [Recommendation with specific action and expected impact]
+2. [Recommendation with specific action and expected impact]
+3. [Recommendation with specific action and expected impact]
+
+MEDIUM PRIORITY (address within sprint):
+1. [Recommendation]
+2. [Recommendation]
+
+LOW PRIORITY (address when possible):
+1. [Recommendation]
+2. [Recommendation]
+
+9. Appendix: Evidence Index
+
+Files and references organized by area:
+
+Testing:
+- [file path: what was found]
+
+Architecture:
+- [file path: what was found]
+
+Code Standards:
+- [file path: what was found]
